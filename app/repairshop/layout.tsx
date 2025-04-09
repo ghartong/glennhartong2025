@@ -11,9 +11,11 @@ export default function RSLayout({
   return (
     <div className="flex flex-col w-full mx-0">
       <Link href="/portfolio" className={layout.title}>Back to Portfolio</Link>
-      <div>
+      <div className="mx-auto w-full max-w-7xl">
         <Header />
-        {children}
+        <div className="px-4 py-4 w-90">
+          {children}
+        </div>
       </div>
     </div>
   );

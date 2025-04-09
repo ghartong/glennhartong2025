@@ -1,5 +1,7 @@
-import { HomeIcon, File, UsersRound } from 'lucide-react';
+import { HomeIcon, File, UsersRound, LogOut } from 'lucide-react';
 import Link from 'next/link';
+import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/components';
+import { Button } from '@/components/ui/button';
 
 import { NavButton } from './NavButton';
 import { ModeToggle } from '@/components/modeToggle';
@@ -13,7 +15,7 @@ function Header() {
 
                     <Link href="/repairshop" className="flex justify-center items-center gap-2 ml-0" title="Home">
                         <h1 className="hidden sm:block text-xl font-bold m-0 mt-1">
-                            Computer Repair Shop        
+                            Computer Repair Shop
                         </h1>
                     </Link>
                 </div>
@@ -21,6 +23,19 @@ function Header() {
                     <NavButton href="/repairshop/tickets" label="Tickets" icon={File} />
                     <NavButton href="/repairshop/customers" label="Customers" icon={UsersRound} />
                     <ModeToggle />
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        aria-label="Log out"
+                        title="Logout"
+                        className="rounded-full"
+                        asChild
+                    >
+                        <LogoutLink>
+                            <LogOut />
+                        </LogoutLink>
+                    </Button>
+
                 </div>
             </div>
         </header>
