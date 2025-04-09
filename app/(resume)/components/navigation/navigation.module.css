@@ -1,0 +1,24 @@
+.reddog_nav {
+    border-bottom: 1px solid white;
+    padding: 0 2rem;
+    width: 100%;
+
+    ul {
+        display: flex;
+        gap: 1rem;
+    }
+
+    li {
+        list-style: none;
+        padding: 0.5rem;
+
+        a:hover {
+            color: black;
+        }
+
+        &.selected {
+            color: black;
+        }        
+    }
+}
+

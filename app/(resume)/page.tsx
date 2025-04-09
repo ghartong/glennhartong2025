@@ -1,6 +1,4 @@
-import type { Metadata } from "next";
-
-import Header from './components/header/Header';
+import type { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Glenn Hartong",
@@ -9,10 +7,7 @@ export const metadata: Metadata = {
 
 function Resume() {
   return (
-    <main>
-      <Header />
-      <h1>Public site</h1>
-    </main>
+    <h1>Public site</h1>
   );
 }
 

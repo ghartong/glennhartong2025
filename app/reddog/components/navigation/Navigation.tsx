@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { useSelectedLayoutSegment } from 'next/navigation';
+import { LogoutLink } from '@kinde-oss/kinde-auth-nextjs/components';
 
 import navigation from './navigation.module.css'
 
@@ -41,6 +42,11 @@ function Navigation() {
                         </Link>
                     </li>
                 ))}
+                <li key="login">
+                    <LogoutLink>
+                        Logout
+                    </LogoutLink>
+                </li>
             </ul>
         </nav>
     );

@@ -1,0 +1,70 @@
+:root {
+    --font-size: 2rem;
+    --line-height: 1.2;
+    --num-words: 6; /* include the dupicate entry */
+    --animation-duration: 8s; /* Adjust duration as needed */
+    --blue: black;
+  }
+  
+  .rotating-text {
+    font-size: var(--font-size);
+    font-style: italic;
+    line-height: var(--line-height);
+  }
+  
+  .window {
+    display: inline-block;
+    overflow: hidden;
+    flex-grow: 1;
+    height: calc(var(--font-size) * var(--line-height));
+    vertical-align: bottom;
+  }
+  
+  .window-inner {
+    display: inline-block;
+    animation: scroll-text var(--animation-duration) ease-in-out infinite;
+    color: var(--blue);
+  }
+  .window span {
+    display: block;
+  }
+  
+  @keyframes scroll-text {
+    0% {
+        transform: translateY(0%); /* first */
+      }
+      16.66% {
+        transform: translateY(calc(-16.66%)); /* second */
+      }
+      33.33% {
+        transform: translateY(calc(-33.33%)); /* third */
+      }
+      50% {
+        transform: translateY(calc(-50%)); /* fourth */
+      }
+      66.66% {
+        transform: translateY(calc(-66.66%)); /* fifth */
+      }
+      83.33% {
+        transform: translateY(calc(-83.33%)); /* first (at the end) */
+      }
+      100% {
+        transform: translateY(calc(-83.33%)); /* first (at the end) */
+      }
+  }
+  
+  .container {
+    height: 48px;
+    margin-left: auto;
+    max-width: 20rem;
+    width: 100%;
+
+    @media (max-width: 850px) {
+        margin-left: 0;
+    }
+  }
+  
+  .nowrap {
+    white-space: nowrap;
+  }
+    

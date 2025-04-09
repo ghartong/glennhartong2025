@@ -1,19 +1,26 @@
 "use client";
 
-import Logo from '../logo/Logo'
-import Navigation from '../navigation/Navigation'
-import header from './header.module.css'
+import Link from 'next/link';
 
-console.log('running in client: Header')
+import Logo from '../logo/Logo';
+import Navigation from '../navigation/Navigation';
+import Animation from './Animation';
+
+import header from './header.module.css';
 
 function Header() {
-    return (
-      <header>
-        <Logo />
-        <h1 className={header.red} data-id="reddog-h1">Glenn Hartong</h1>
-        <Navigation />
-      </header>
-    );
-  }
+  return (
+    <header className={header.header}>
+      <section className={header.wrapper}>
+        <Link href="/" aria-label="Jump to the home page">
+          <Logo />
+        </Link>
+        <h2 className={header.sitename}>Glenn Hartong</h2>
+        <Animation />
+      </section>
+      <Navigation />
+    </header>
+  );
+}
 
 export default Header;
