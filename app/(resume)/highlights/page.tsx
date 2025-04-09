@@ -1,3 +1,7 @@
+export const metadata = {
+    title: "Highlights",
+}
+
 function Highlights() {
     return (
         <section>

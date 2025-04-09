@@ -1,4 +1,4 @@
-.reddog_nav {
+.nav {
     border-bottom: 1px solid white;
     padding: 0 2rem;
     width: 100%;
@@ -12,13 +12,21 @@
         list-style: none;
         padding: 0.5rem;
 
+        a {
+            color: white;
+        }
+
         a:hover {
             color: black;
         }
-
-        &.selected {
-            color: black;
-        }        
     }
+
+    li.selected {
+        a {
+            color: black;
+        }
+    }
+    
 }
+
 

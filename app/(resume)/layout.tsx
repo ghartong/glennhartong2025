@@ -1,4 +1,3 @@
-import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 
 import Header from "./components/header/Header"
@@ -15,11 +14,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-export const metadata: Metadata = {
-  title: "Reddog",
-  description: "stuff for me, not for you",
-};
 
 export default function ResumeLayout({
   children,

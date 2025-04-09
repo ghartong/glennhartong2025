@@ -34,6 +34,13 @@ function Navigation() {
         },
         {
             id: 5,
+            title: 'Portfolio',
+            href: '/portfolio',
+            activeSegment: 'portfolio',
+        },
+
+        {
+            id: 6,
             title: 'Private Site',
             href: '/reddog',
             activeSegment: 'nope',
@@ -41,7 +48,7 @@ function Navigation() {
     ]
 
     return (
-        <nav className={navigation.reddog_nav}>
+        <nav className={navigation.nav}>
             <ul>
                 {links.map((item) => (
                     <li

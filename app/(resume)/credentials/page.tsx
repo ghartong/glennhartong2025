@@ -1,3 +1,7 @@
+export const metadata = {
+    title: "Credentials",
+}
+
 function Credentials() {
     return (
         <section>

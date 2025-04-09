@@ -1,4 +1,4 @@
-@import '../../../globals.css';
+/* @import '../../../globals.css'; */
 
 .header {
     background-color: var(--red);
@@ -68,18 +68,19 @@
 @keyframes scrollText {
     0% {
         opacity: 0;
-        transform: translateY(100%); /* Start below the div */
+        transform: translateY(100%);
       }
       25% {
         opacity: 1;
-        transform: translateY(0); /* Move to the center (visible) */
+        transform: translateY(0);
       }
       55% {
         opacity: 1;
-        transform: translateY(-100%); /* Move out of view to the top */
+        transform: translateY(-100%);
       }
       100% {
         opacity: 0;
-        transform: translateY(-100%); /* Completely out of view */
+        transform: translateY(-100%);
       }
   }
+ 

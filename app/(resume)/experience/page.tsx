@@ -1,3 +1,7 @@
+export const metadata = {
+    title: "Experience",
+}
+
 function Experience() {
     return (
         <section>
