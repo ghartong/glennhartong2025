@@ -23,6 +23,12 @@ function Navigation() {
         },
         {
             id: 3,
+            title: 'Employers',
+            href: '/reddog/employers',
+            activeSegment: 'employers',
+        },
+        {
+            id: 4,
             title: 'Public Site',
             href: '/',
             activeSegment: 'nope',

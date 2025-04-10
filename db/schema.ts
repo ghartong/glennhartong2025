@@ -1,5 +1,6 @@
 import { pgTable, serial, varchar, boolean, timestamp, integer, text } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
+import { number } from "zod";
 
 export const customers = pgTable("customers", {
     id: serial("id").primaryKey(),
@@ -46,3 +47,19 @@ export const ticketsRelations = relations(tickets,
         })
     })
 )
+
+export const employers = pgTable("employers", {
+    id: serial("id").primaryKey(),
+    name: varchar("name").notNull(),
+    title: varchar("title").notNull(),
+    location: varchar("location"),
+    isActive: boolean("is_active").notNull().default(false),
+    duties: text("duties"),
+    notes: text("notes"),
+    displayOrder: integer("display_order"),
+    startedAt: varchar("started_at"),
+    endedAt: varchar("ended_at"),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at").notNull().defaultNow().
+        $onUpdate(() => new Date()),
+})

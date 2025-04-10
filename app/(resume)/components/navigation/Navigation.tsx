@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useSelectedLayoutSegment } from 'next/navigation';
-
+import { Menu as MenuIcon } from 'lucide-react';
 import navigation from './navigation.module.css'
 
 function Navigation() {
