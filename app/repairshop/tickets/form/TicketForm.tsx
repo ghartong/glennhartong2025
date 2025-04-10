@@ -4,23 +4,36 @@ import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Form } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
+import { toast } from "sonner"
+
+import { InputWithLabel } from "@/components/inputs/InputWithLabel"
+import { SelectWithLabel } from "@/components/inputs/SelectWithLabel"
+import { TextAreaWithLabel } from "@/components/inputs/TextAreaWithLabel"
+import { CheckboxWithLabel } from "@/components/inputs/CheckboxWithLable"
 
 import { insertTicketSchema, type insertTicketSchemaType, type selectTicketSchemaType } from "@/zod-schemas/ticket"
 import { selectCustomerSchemaType } from "@/zod-schemas/customer"
 
-import { InputWithLabel } from "@/components/inputs/InputWithLabel"
-import { TextAreaWithLabel } from "@/components/inputs/TextAreaWithLabel"
-import { SelectWithLabel } from "@/components/inputs/SelectWithLabel"
-import { CheckboxWithLabel } from "@/components/inputs/CheckboxWithLable"
+import { useAction } from 'next-safe-action/hooks'
+import { saveTicketAction } from "@/app/actions/saveTicketAction"
+import { LoaderCircle } from 'lucide-react'
+import { DisplayServerActionResponse } from "@/components/DisplayServerActionResponse"
 
 type Props = {
     customer: selectCustomerSchemaType,
     ticket?: selectTicketSchemaType,
+    techs?: {
+        id: string,
+        description: string,
+    }[],
+    isEditable?: boolean,
 }
 
 export default function TicketForm({
-    customer, ticket
+    customer, ticket, techs, isEditable = true
 }: Props) {
+    const isManager = Array.isArray(techs)
+
     const defaultValues: insertTicketSchemaType = {
         id: ticket?.id ?? "(New)",
         customerId: ticket?.customerId ?? customer.id,
@@ -36,17 +49,34 @@ export default function TicketForm({
         defaultValues,
     })
 
+    const {
+        execute: executeSave,
+        result: saveResult,
+        isPending: isSaving,
+        reset: resetSaveAction,
+    } = useAction(saveTicketAction, {
+        onSuccess({ data }) {
+            if (data?.message) {
+                toast.success(`Success! ${data.message}`)
+            }
+        },
+        onError({ error }) {
+            toast.error('Error: Save failed')
+        }
+    })
+
     async function submitForm(data: insertTicketSchemaType) {
-        console.log(data)
+        executeSave(data)
     }
 
     return (
         <div className="flex flex-col gap-1 sm:px-8">
+            <DisplayServerActionResponse result={saveResult} />            
             <div>
                 <h2 className="text-2xl font-bold">
-                    {ticket?.id
+                    {ticket?.id && isEditable
                         ? `Edit Ticket # ${ticket.id}`
-                        : "New Ticket Form"
+                        : ticket?.id ? `View Ticket # ${ticket.id}` : "New Ticket Form"
                     }
                 </h2>
             </div>
@@ -60,19 +90,32 @@ export default function TicketForm({
                             fieldTitle="Title"
                             nameInSchema="title"
                             className=""
+                            disabled={!isEditable}
                         />
-                        <InputWithLabel<insertTicketSchemaType>
-                            fieldTitle="Tech"
-                            nameInSchema="tech"
-                            className=""
-                            disabled={true}
-                        />
-                        <CheckboxWithLabel<insertTicketSchemaType>
-                            fieldTitle="Completed"
-                            nameInSchema="completed"
-                            className=""
-                            message="Yes"
-                        />
+                        {isManager ? (
+                            <SelectWithLabel<insertTicketSchemaType>
+                                fieldTitle="Tech ID"
+                                nameInSchema="tech"
+                                className=""
+                                data={[{ id: 'new-ticket@example.com', description: 'new-ticket@example.com' }, ...techs]}
+                            />
+                        ) : (
+                            <InputWithLabel<insertTicketSchemaType>
+                                fieldTitle="Tech"
+                                nameInSchema="tech"
+                                className=""
+                                disabled={true}
+                            />
+                        )}
+                        {ticket?.id && (
+                            <CheckboxWithLabel<insertTicketSchemaType>
+                                fieldTitle="Completed"
+                                nameInSchema="completed"
+                                className=""
+                                message="Yes"
+                                disabled={!isEditable}
+                            />
+                        )}
                         <div className="mt-4 space-y-2">
                             <h3 className="text-lg">Customer Info</h3>
                             <hr className="w-4/5" />
@@ -90,31 +133,40 @@ export default function TicketForm({
                             fieldTitle="Description"
                             nameInSchema="description"
                             className="h-96"
+                            disabled={!isEditable}
                         />
 
-                        <div className="flex gap-2">
-                            <Button
-                                type="submit"
-                                className="w-3/4"
-                                variant="default"
-                                title="Save"
-                            >
-                                Save
-                            </Button>
-                            <Button
-                                type="button"
-                                variant="destructive"
-                                title="Reset"
-                                onClick={() => form.reset(defaultValues)}
-                            >
-                                Reset
-                            </Button>
-                        </div>
-
+                        {isEditable && (
+                            <div className="flex gap-2">
+                                <Button
+                                    type="submit"
+                                    className="w-3/4"
+                                    variant="default"
+                                    title="Save"
+                                    disabled={isSaving}
+                                >
+                                    {isSaving ? (
+                                        <><LoaderCircle className="animate-spin" /> Saving</>
+                                    ) : (
+                                        "Save"
+                                    )}
+                                </Button>
+                                <Button
+                                    type="button"
+                                    variant="destructive"
+                                    title="Reset"
+                                    onClick={() => {
+                                        form.reset(defaultValues)
+                                        resetSaveAction()
+                                    }}
+                                >
+                                    Reset
+                                </Button>
+                            </div>
+                        )}
                     </div>
                 </form>
             </Form>
-
         </div>
     )
 }

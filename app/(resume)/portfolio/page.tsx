@@ -1,16 +1,20 @@
-import Link from 'next/link';
+import SiteCard from './components/SiteCard'
+import { sites } from './utils'
 
 export const metadata = {
     title: "Portfolio",
 }
 
+
 function PortfolioPage() {
     return (
         <>
-            <h2>Portfolio</h2>
-            <ul>
-                <li><Link href="/repairshop">Computer Repair Shop</Link></li>
-            </ul>
+            <h2 className="font-extrabold">Portfolio</h2>
+            <section className="flex flex-wrap flex-row">
+                {sites.map(site => (
+                    <SiteCard site={site} key={site.id} />
+                ))}
+            </section>
         </>
     );
 }
