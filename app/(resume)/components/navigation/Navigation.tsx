@@ -40,6 +40,12 @@ function Navigation() {
         },
         {
             id: 6,
+            title: 'Contact',
+            href: '/contact',
+            activeSegment: 'contact',
+        },
+        {
+            id: 7,
             title: 'Private Site',
             href: '/reddog',
             activeSegment: 'nope',
