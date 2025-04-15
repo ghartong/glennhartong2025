@@ -1,3 +1,15 @@
 .body {
     padding: 2rem;
 }
+
+.body p {
+    padding-top: 2rem;
+}
+
+.body ul {
+    list-style-type: square;
+}
+
+.body ul li {
+    margin-left: 1rem;
+}

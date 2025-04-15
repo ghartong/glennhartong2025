@@ -8,7 +8,7 @@ async function Experience() {
     const results = await getEmployers()
     return (
         <section>
-            <h1>Experience</h1>
+            <h1 className="font-extrabold">Experience</h1>
             <p>{results?.length} records found</p>
             <p>{JSON.stringify(results)}</p>
         </section>

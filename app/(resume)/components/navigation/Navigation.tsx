@@ -22,23 +22,22 @@ function Navigation() {
         },
         {
             id: 3,
-            title: 'Highlights',
-            href: '/highlights',
-            activeSegment: 'highlights',
-        },
-        {
-            id: 4,
             title: 'Credentials',
             href: '/credentials',
             activeSegment: 'credentials',
         },
         {
-            id: 5,
+            id: 4,
             title: 'Portfolio',
             href: '/portfolio',
             activeSegment: 'portfolio',
         },
-
+        {
+            id: 5,
+            title: 'Leadership',
+            href: '/leadership',
+            activeSegment: 'leadership',
+        },
         {
             id: 6,
             title: 'Private Site',

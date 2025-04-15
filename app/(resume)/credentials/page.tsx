@@ -4,9 +4,9 @@ export const metadata = {
 
 function Credentials() {
     return (
-        <section>
-            <h1>Credentials</h1>
-        </section>
+        <>
+            <h1 className="font-extrabold">Credentials</h1>
+        </>
     );
 }
 

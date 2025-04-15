@@ -1,5 +1,6 @@
 import CustomerSearch from "./CustomerSearch"
 import { getCustomerSearchResults } from "@/lib/queries/getCustomerSearchResults"
+import CustomerTable from "./CustomerTable"
 
 export const metadata = {
     title: "Customer Search", 
@@ -19,8 +20,14 @@ async function Customers({
     return (
         <>
             <CustomerSearch />
-            <p>{results?.length} records found</p>
-            <p>{JSON.stringify(results)}</p>
+            {results.length ? (
+                <>
+                    <p>{results.length} records found</p>
+                    <CustomerTable data={results} /> 
+                </>
+            ) : (
+                <p className="mt-4">No results found</p>
+            )}
         </>
     )
 }

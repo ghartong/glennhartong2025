@@ -9,7 +9,7 @@ export const metadata = {
 function PortfolioPage() {
     return (
         <>
-            <h2 className="font-extrabold">Portfolio</h2>
+            <h1 className="font-extrabold">Portfolio</h1>
             <section className="flex flex-wrap flex-row">
                 {sites.map(site => (
                     <SiteCard site={site} key={site.id} />
