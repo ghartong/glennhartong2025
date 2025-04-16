@@ -50,7 +50,8 @@ export default function TicketTable({ data }: Props) {
         },
     ])
 
-    usePolling(searchParams.get("searchText"), 300000) 
+    // This is real time data stuff. I don't want it in production
+    // usePolling(searchParams.get("searchText"), 300000) 
 
     const pageIndex = useMemo(() => {
         const page = searchParams.get("page")
