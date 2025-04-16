@@ -1,5 +1,6 @@
 import TicketSearch from "./TicketSearch"
 import { getTicketSearchResults } from "@/lib/queries/getTicketSearchResults"
+import TicketTable from "./TicketTable"
 import { getOpenTickets } from "@/lib/queries/getOpenTickets"
 
 export const metadata = {
@@ -18,8 +19,7 @@ async function Tickets({
         return (
             <>
                 <TicketSearch />
-                <p>{results?.length} records found</p>
-                <p>{JSON.stringify(results)}</p>
+                {results.length ? <TicketTable data={results} /> : <p className="mt-4">No open tickets found</p>}
             </>
         )
     }
@@ -29,8 +29,7 @@ async function Tickets({
     return (
         <>
             <TicketSearch />
-            <p>{results?.length} records found</p>
-            <p>{JSON.stringify(results)}</p>
+            {results.length ? <TicketTable data={results} /> :  <p className="mt-4">No results found</p>}
         </>
     )
 }

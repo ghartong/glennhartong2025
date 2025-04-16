@@ -13,7 +13,7 @@ export default function RSLayout({
       <Link href="/portfolio" className={layout.title}>Back to Portfolio</Link>
       <div className="mx-auto w-full max-w-7xl">
         <Header />
-        <div className="px-4 py-4 w-90">
+        <div className="px-4 py-4 w-full">
           {children}
         </div>
       </div>
