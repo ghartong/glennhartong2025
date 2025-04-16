@@ -2,12 +2,17 @@
 
 import type { TicketSearchResultsType } from "@/lib/queries/getTicketSearchResults"
 
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+
 import {
     createColumnHelper,
     flexRender,
     getCoreRowModel,
     useReactTable,
     getPaginationRowModel,
+    SortingState,
+    getSortedRowModel,
 } from "@tanstack/react-table"
 import {
     Table,
@@ -21,8 +26,10 @@ import {
 import {
     CircleCheckIcon,
     CircleXIcon,
+    ArrowUpDown,
+    ArrowDown,
+    ArrowUp,
 } from "lucide-react"
-import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 
 type Props = {
@@ -33,6 +40,13 @@ type RowType = TicketSearchResultsType[0] //convience type
 
 export default function TicketTable({ data }: Props) {
     const router = useRouter()
+
+    const [sorting, setSorting] = useState<SortingState>([
+        {
+            id: "ticketDate",
+            desc: false, // false for ascending
+        },
+    ])
 
     const columnHeadersArray: Array<keyof RowType> = [
         "ticketDate",
@@ -62,7 +76,27 @@ export default function TicketTable({ data }: Props) {
             return value
         }, {
             id: columnName,
-            header: columnName[0].toUpperCase() + columnName.slice(1),
+            header: ({ column }) => {
+                return (
+                    <Button
+                        variant="ghost"
+                        className="pl-1 w-full flex justify-between"
+                        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+                    >
+                        {columnName[0].toUpperCase() + columnName.slice(1)}
+
+                        {column.getIsSorted() === "asc" && (
+                            <ArrowUp className="ml-2 h-4 w-4" />
+                        )}
+                        {column.getIsSorted() === "desc" && (
+                            <ArrowDown className="ml-2 h-4 w-4" />
+                        )}
+                        {column.getIsSorted() !== "asc" && column.getIsSorted() !== "desc" && (
+                            <ArrowUpDown className="ml-2 h-4 w-4" />
+                        )}
+                    </Button>
+                )
+            },
             cell: ({ getValue }) => {  // presentational
                 const value = getValue()
                 if (columnName === "completed") {
@@ -80,13 +114,18 @@ export default function TicketTable({ data }: Props) {
     const table = useReactTable({
         data,
         columns,
+        state: {
+            sorting,
+        },
         initialState: {
             pagination: {
                 pageSize: 10,
             },
         },
+        onSortingChange: setSorting,
         getCoreRowModel: getCoreRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
+        getSortedRowModel: getSortedRowModel(),
     })
 
     return (
@@ -141,6 +180,12 @@ export default function TicketTable({ data }: Props) {
                     </p>
                 </div>
                 <div className="space-x-1">
+                    <Button
+                        variant="ghost"
+                        onClick={() => table.resetSorting()}
+                    >
+                        Reset Sorting
+                    </Button>
                     <Button
                         variant="outline"
                         onClick={() => table.previousPage()}
