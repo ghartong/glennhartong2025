@@ -43,12 +43,6 @@ function Navigation() {
             href: '/contact',
             activeSegment: 'contact',
         },
-        {
-            id: 7,
-            title: 'Private Site',
-            href: '/reddog',
-            activeSegment: 'nope',
-        },
     ]
 
     return (
