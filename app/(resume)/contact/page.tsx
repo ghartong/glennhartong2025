@@ -32,7 +32,7 @@ function Contact() {
                 <p>I&apos;m currently open to new opportunities and always happy to chat about how I can help bring great ideas to life.</p>
                 <Button asChild variant="secondary" className="mt-5">
                     <a
-                        href="/public/assets/Glenn_Hartong_Resume_2025.pdf"
+                        href="/assets/Glenn_Hartong_Resume_2025.pdf"
                         download
                         className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-xl transition-colors duration-300"
                         aria-label="Download Glenn Hartong's resume in PDF format" 
