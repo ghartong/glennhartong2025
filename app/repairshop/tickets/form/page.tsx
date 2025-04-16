@@ -12,7 +12,7 @@ export async function generateMetadata({
     searchParams: Promise<{ [key: string]: string | undefined }>
 }) {
     const { customerId, ticketId } = await searchParams
-    
+
     if (!customerId && !ticketId) return {
         title: 'Missing Ticket ID or Customer ID'
     }
@@ -25,7 +25,7 @@ export async function generateMetadata({
         title: `Edit Ticket #${ticketId}`
     }
 
-    return {title: 'Edit Ticket'}
+    return { title: 'Edit Ticket' }
 }
 
 export default async function TicketFormPage({
@@ -69,7 +69,7 @@ export default async function TicketFormPage({
                 kindeInit() // initialize Kinde management API
                 const { users } = await Users.getUsers()
 
-                const techs = users ? users.map(user => ({ id: user.email!, description: user.email!})) : []
+                const techs = users ? users.map(user => ({ id: user.email!, description: user.email! })) : []
 
                 return <TicketForm customer={customer} techs={techs} isManager={isManager} />
             } else {
@@ -95,13 +95,17 @@ export default async function TicketFormPage({
                 kindeInit() // initialize Kinde management API
                 const { users } = await Users.getUsers()
 
-                const techs = users ? users.map(user => ({ id: user.email?.toLocaleLowerCase()!, description: user.email?.toLocaleLowerCase()!})) : []
+                const techs = users ?
+                    users
+                        .filter((user): user is { email: string } => typeof user.email === "string")
+                        .map(user => ({ id: user.email?.toLocaleLowerCase(), description: user.email?.toLocaleLowerCase() }))
+                    : []
 
-                return <TicketForm customer={customer}  ticket={ticket} techs={techs} isManager={isManager} />
+                return <TicketForm customer={customer} ticket={ticket} techs={techs} isManager={isManager} />
             } else {
                 const isEditable = user?.email?.toLowerCase() === ticket.tech.toLowerCase()
 
-                return <TicketForm customer={customer}  ticket={ticket} isEditable={isEditable} />
+                return <TicketForm customer={customer} ticket={ticket} isEditable={isEditable} />
             }
 
             return <TicketForm customer={customer} ticket={ticket} />
