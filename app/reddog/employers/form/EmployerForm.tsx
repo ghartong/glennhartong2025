@@ -53,7 +53,7 @@ export default function EmployerForm({ employer }: Props) {
                 toast.success(`Success! ${data.message}`)
             }
         }, 
-        onError({ error }) {
+        onError() {
             toast.error('Error: Save failed')
         }
     })

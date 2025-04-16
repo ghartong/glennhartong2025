@@ -81,7 +81,7 @@ export default function CustomerForm({ customer, isManager = false }: Props) {
                 toast.success(`Success! ${data.message}`)
             }
         }, 
-        onError({ error }) {
+        onError() {
             toast.error('Error: Save failed')
         }
     })

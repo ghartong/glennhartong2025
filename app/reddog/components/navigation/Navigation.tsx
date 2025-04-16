@@ -43,7 +43,7 @@ function Navigation() {
 
     return (
         <nav className={navigation.reddog_nav}>
-            <ul>
+            <ul className={navigation.reddog_navUl}>
                 {links.map((item) => (
                     <li
                         key={item.id}

@@ -6,7 +6,6 @@ import { Form } from "@/components/ui/form"
 import { insertLeadershipSchema, type insertLeadershipSchemaType, type selectLeadershipSchemaType } from "@/zod-schemas/leadership"
 import { useAction } from 'next-safe-action/hooks'
 import { saveLeadershipAction } from "@/app/actions/saveLeadershipAction"
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs"
 import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
@@ -20,9 +19,6 @@ type Props = {
 }
 
 export default function LeadershipForm({ leadership }: Props) {
-    const { getPermission, isLoading } = useKindeBrowserClient()
-    const isManager = !isLoading && getPermission('admin')?.isGranted
-
     const defaultValues: insertLeadershipSchemaType = {
         id: leadership?.id ?? 0,
         organization: leadership?.organization ?? '',
@@ -48,7 +44,7 @@ export default function LeadershipForm({ leadership }: Props) {
                 toast.success(`Success! ${data.message}`)
             }
         }, 
-        onError({ error }) {
+        onError() {
             toast.error('Error: Save failed')
         }
     })

@@ -8,9 +8,7 @@ export const actionClient = createSafeActionClient({
             actionName: z.string(),
         })
     },
-    handleServerError(e, utils) {
-        const { clientInput, metadata } = utils
-
+    handleServerError(e) {
         if (e.constructor.name === 'NeonDbError') {
             const { code, detail } = e as NeonDbError
             if (code === "23505") { // unique record error

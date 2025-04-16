@@ -5,28 +5,26 @@
     padding: 0 2rem;
     width: 100%;
 
-    ul {
+    .navUl {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
     }
 
-    li {
+    .navUl li {
         list-style: none;
         padding: 0.5rem;
 
-        a {
+        .navUl li a {
             color: white;
         }
 
-        a:hover {
+        .navUl li a:hover {
             color: black;
         }
     }
 
-    li.selected {
-        a {
+    .navUl li.selected a {
             color: black;
-        }
     }    
 }

@@ -4,7 +4,7 @@ import type { TicketSearchResultsType } from "@/lib/queries/getTicketSearchResul
 
 import { useState, useMemo } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
-import { usePolling } from "@/hooks/usePolling"
+// import { usePolling } from "@/hooks/usePolling"
 
 import {
     createColumnHelper,
@@ -56,7 +56,7 @@ export default function TicketTable({ data }: Props) {
     const pageIndex = useMemo(() => {
         const page = searchParams.get("page")
         return page ? parseInt(page) - 1 : 0
-    }, [searchParams.get("page")])
+    }, [searchParams.get("page")]) // eslint-disable-line react-hooks/exhaustive-deps
 
     const columnHeadersArray: Array<keyof RowType> = [
         "ticketDate",

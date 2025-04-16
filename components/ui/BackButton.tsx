@@ -10,7 +10,7 @@ type Props = {
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 export function BackButton(
-    { title, className, ...props }: Props
+    { title, className }: Props
 ) {
         const router = useRouter()
 

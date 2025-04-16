@@ -6,7 +6,6 @@ import { Form } from "@/components/ui/form"
 import { insertCredentialSchema, type insertCredentialSchemaType, type selectCredentialSchemaType } from "@/zod-schemas/credential"
 import { useAction } from 'next-safe-action/hooks'
 import { saveCredentialAction } from "@/app/actions/saveCredentialAction"
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs"
 import { toast } from "sonner"
 
 import { Button } from "@/components/ui/button"
@@ -20,9 +19,6 @@ type Props = {
 }
 
 export default function CredentialForm({ credential }: Props) {
-    const { getPermission, isLoading } = useKindeBrowserClient()
-    const isManager = !isLoading && getPermission('admin')?.isGranted
-
     const defaultValues: insertCredentialSchemaType = {
         id: credential?.id ?? 0,
         name: credential?.name ?? '',
@@ -48,7 +44,7 @@ export default function CredentialForm({ credential }: Props) {
                 toast.success(`Success! ${data.message}`)
             }
         }, 
-        onError({ error }) {
+        onError() {
             toast.error('Error: Save failed')
         }
     })

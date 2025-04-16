@@ -1,7 +1,5 @@
 "use client"
 
-import { useRouter } from "next/navigation"
-
 import type { selectCustomerSchemaType } from "@/zod-schemas/customer"
 import {
     createColumnHelper,
@@ -37,8 +35,6 @@ type Props = {
 }
 
 export default function CustomerTable({ data }: Props) {
-    const router = useRouter()
-
     const columnHeadersArray: Array<keyof selectCustomerSchemaType> = [
         "firstName",
         "lastName",

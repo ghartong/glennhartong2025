@@ -3,16 +3,16 @@
     padding: 1rem 2rem 0;
     width: 100%;
 
-    ul {
+    .reddog_navUl {
         display: flex;
         gap: 1rem;
     }
 
-    li {
+    .reddog_navUl li {
         list-style: none;
         padding: 0.5rem;
 
-        a:hover {
+        .reddog_navUl li a:hover {
             color: red;
         }
 

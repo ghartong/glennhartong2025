@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { useSelectedLayoutSegment } from 'next/navigation';
-import { Menu as MenuIcon } from 'lucide-react';
 import navigation from './navigation.module.css'
 
 function Navigation() {
@@ -54,7 +53,7 @@ function Navigation() {
 
     return (
         <nav className={navigation.nav}>
-            <ul>
+            <ul className={navigation.navUl}>
                 {links.map((item) => (
                     <li
                         key={item.id}

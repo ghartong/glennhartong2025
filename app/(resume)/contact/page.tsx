@@ -9,7 +9,7 @@ function Contact() {
         <>
             <h1 className="font-extrabold">Contact Glenn Hartong</h1>
             <section>
-                <p className="leading-relaxed">Whether you're a recruiter looking for a seasoned engineer, a team in need of a reliable collaborator, or just curious about my work — I'd love to connect.</p>
+                <p className="leading-relaxed">Whether you&apos;re a recruiter looking for a seasoned engineer, a team in need of a reliable collaborator, or just curious about my work — I&apos;d love to connect.</p>
                 <p>You can find me on{' '}
                     <a
                         href="https://www.linkedin.com/in/glennhartong"
@@ -29,7 +29,7 @@ function Contact() {
                         GitHub
                     </a>
                     , or check out my resume below for a full overview of my experience.</p>
-                <p>I'm currently open to new opportunities and always happy to chat about how I can help bring great ideas to life.</p>
+                <p>I&apos;m currently open to new opportunities and always happy to chat about how I can help bring great ideas to life.</p>
                 <Button asChild variant="secondary" className="mt-5">
                     <a
                         href="/public/assets/Glenn_Hartong_Resume_2025.pdf"
