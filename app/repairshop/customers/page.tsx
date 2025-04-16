@@ -21,10 +21,7 @@ async function Customers({
         <>
             <CustomerSearch />
             {results.length ? (
-                <>
-                    <p>{results.length} records found</p>
-                    <CustomerTable data={results} /> 
-                </>
+                <CustomerTable data={results} /> 
             ) : (
                 <p className="mt-4">No results found</p>
             )}
