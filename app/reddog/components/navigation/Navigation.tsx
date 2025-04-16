@@ -17,9 +17,9 @@ function Navigation() {
         },
         {
             id: 2,
-            title: 'Video',
-            href: '/reddog/video',
-            activeSegment: 'video',
+            title: 'Leadership',
+            href: '/reddog/leaderships',
+            activeSegment: 'leaderships',
         },
         {
             id: 3,
@@ -29,6 +29,12 @@ function Navigation() {
         },
         {
             id: 4,
+            title: 'Credentials',
+            href: '/reddog/credentials',
+            activeSegment: 'credentials',
+        },
+        {
+            id: 5,
             title: 'Public Site',
             href: '/',
             activeSegment: 'nope',

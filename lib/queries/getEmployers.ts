@@ -5,7 +5,7 @@ import { employers } from "@/db/schema"
 export async function getEmployers() {
     const results = await db.select()
         .from(employers)
-        .orderBy(desc(employers.startedAt))
+        .orderBy(employers.displayOrder)
 
     return results
 }

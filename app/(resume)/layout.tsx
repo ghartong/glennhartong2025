@@ -23,7 +23,7 @@ export default function ResumeLayout({
   return (
     <main>
       <Header />
-      <div className={`${geistSans.variable} ${geistMono.variable} ${layout.body}`}>
+      <div className={`${geistSans.variable} ${geistMono.variable} ${layout.body} grid`}>
         {children}
       </div>
     </main>

@@ -22,7 +22,7 @@ function Navigation() {
         },
         {
             id: 3,
-            title: 'Credentials',
+            title: 'Education & Certifications',
             href: '/credentials',
             activeSegment: 'credentials',
         },

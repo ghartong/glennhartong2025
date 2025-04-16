@@ -1,11 +1,26 @@
+import { getCredentials } from "@/lib/queries/getCredentials"
+import ListCard from "@/app/(resume)/components/ListCard"
+
 export const metadata = {
     title: "Credentials",
 }
 
-function Credentials() {
+async function Credentials() {
+    const results = await getCredentials()
     return (
         <>
             <h1 className="font-extrabold">Credentials</h1>
+            <section className="w-full mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {results.map(r => (
+                    <ListCard 
+                        name={r.name} 
+                        description={<>{r.organization}</>}
+                        key={r.id}
+                    >
+                        <p>{r.notes}</p>
+                    </ListCard>
+                ))}
+            </section>
         </>
     );
 }

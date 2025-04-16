@@ -39,4 +39,59 @@ export const sites = [
             'React-hook-form (forms)'
         ]
     },
+    {
+        id: 3,
+        name: 'Victory Lodge Membership App',
+        demoLink: '',
+        externalLink: '',
+        externalLinkText: '',
+        shortDesc: 'This app is no longer available',
+        longDesc: '2017 - An Android application that allows a Masonic Lodge to scan memebership card barcodes for authentication against the Grand Lodge of Ohio membership database. Built with Electron and React.',
+        tech: [
+            'React/Redux',
+            'Electron',
+        ]
+    },
+    {
+        id: 4,
+        name: 'Glick Productions',
+        demoLink: '',
+        externalLink: '',
+        externalLinkText: '',
+        shortDesc: 'This site is no longer available',
+        longDesc: '2002 - Company website with authentication and CMS pages. It was our first site and grew over time. It had PayPal integration, RSS feeds and used Flash for a few animations. Under the Glick Productions umbrella I built over 50 sites for different clients.',
+        tech: [
+            'ColdFusion',
+            'RSS',
+            'Flash',
+            'MS Access'
+        ]
+    },
+    {
+        id: 5,
+        name: 'Flower Garden Playhouse',
+        demoLink: '',
+        externalLink: '',
+        externalLinkText: '',
+        shortDesc: 'This site is no longer available',
+        longDesc: '2012 - Daycare website with authentication and CMS pages.',
+        tech: [
+            'ColdFusion',
+            'MySQL'
+        ]
+    },
+    {
+        id: 6,
+        name: 'Ranch City',
+        demoLink: '',
+        externalLink: '',
+        externalLinkText: '',
+        shortDesc: 'This site is no longer the one I built',
+        longDesc: '2014 - eCom site originally built in ColdFusion. Dynamically generated XML used to connect to UPS.com for rates and address validation. CMS pages.',
+        tech: [
+            'ColdFusion',
+            'MS Access',
+            'XML'
+        ]
+    },
 ];

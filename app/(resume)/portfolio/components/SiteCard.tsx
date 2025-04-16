@@ -31,7 +31,7 @@ type Props = {
 
 function SiteCard({ site }: Props) {
     return (
-        <Card className="m-4 min-w-80 w-full sm:w-1/2 md:w-1/2 lg:w-1/4 p-4">
+        <Card className="p-2 md:p-4 w-full">
             <CardHeader>
                 <CardTitle>{site.name}</CardTitle>
                 <CardDescription>{site.shortDesc}</CardDescription>
