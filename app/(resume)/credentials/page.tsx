@@ -18,6 +18,13 @@ async function Credentials() {
                         key={r.id}
                     >
                         <p>{r.notes}</p>
+                        <p>
+                            {r.organization === 'Stark State College of Technology' ?
+                                <span>Graduated 2003</span>
+                            :
+                                new Date(r.acquiredAt!).getFullYear()
+                            }
+                        </p>
                     </ListCard>
                 ))}
             </section>
