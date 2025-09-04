@@ -20,6 +20,19 @@ export const sites = [
         ]
     },
     {
+        id: 15,
+        name: 'First Flutter App',
+        demoLink: '',
+        externalLink: 'https://github.com/ghartong/first_flutter_app',
+        externalLinkText: 'View on GitHub',
+        shortDesc: 'Flutter CodeLab by Filip Hracek',
+        longDesc: `The application generates cool-sounding names, such as "newstay", "lightstream", "mainbrake", or "graypine". The user can ask for the next name, favorite the current one, and review the list of favorites names on a separate page. The app is responsive to different screen sizes. - Filip Hracek`,
+        tech: [
+            'Flutter',
+            'Dart'
+        ]
+    },
+    {
         id: 2,
         name: 'Computer Repair Shop',
         demoLink: '',
