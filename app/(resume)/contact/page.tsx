@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button"
+import ContactForm from "./form";
 
 export const metadata = {
     title: "Contact",
@@ -42,6 +43,7 @@ function Contact() {
                     </a>
                 </Button>
             </section>
+            <ContactForm />
         </>
 )}
 
