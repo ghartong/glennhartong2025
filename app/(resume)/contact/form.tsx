@@ -92,7 +92,7 @@ function ContactForm() {
                     id="helper-text-explanation" 
                     className="italic text-xs text-gray-500 dark:text-gray-400 pt-0"
                 >
-                    I'll never share your details. By entering your information and submitting this form, you agree to let me contact you regarding your inquiry. SMS and phone calls may be used for this purpose. Message and data rates may apply. You can opt out at any time by replying STOP to any message you receive from me.  
+                    I will never share your details. By entering your information and submitting this form, you agree to let me contact you regarding your inquiry. SMS and phone calls may be used for this purpose. Message and data rates may apply. You can opt out at any time by replying STOP to any message you receive from me.  
                 </p>
 
                 <Button
